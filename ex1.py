@@ -23,9 +23,32 @@ def bubble_sort(lista):
             i -=1
         j +=1
     return lista
+
+
+def binary_search(lista,target):
+    inf = 0
+    sup = len(lista)-1
+    mid = (sup + inf) // 2
+    i = 0
+    while inf <= sup:
+        i +=1
+        if target == lista[mid]:
+            return mid,i
+        elif target < lista[mid]:
+            sup = mid -1
+        else:
+            inf = mid +1
+        mid = (sup + inf) // 2
+    return -1
+
+
+
+
 def main():
     print(insertion_sort(lista_disordinata))
-    print(bubble_sort(lista_disordinata))
-
+    lista_ordinata = bubble_sort(lista_disordinata)
+    print(lista_ordinata)
+    target = int(input('inserisci un numero da ricercare: '))
+    print(binary_search(lista_ordinata,target))
 if __name__ == '__main__':
     main()
